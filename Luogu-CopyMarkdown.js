@@ -4,7 +4,7 @@
 // @description  获取个人主页源代码
 // @author       BlackPanda
 // @license      MIT
-// @version      0.1
+// @version      0.2
 // @match        https://www.luogu.com.cn/user/*
 // @grant        none
 // ==/UserScript==
@@ -27,18 +27,18 @@
     var style = document.createElement('style');
     style.textContent = `
         .red-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            position: relative;
-            display: inline-block;
-            padding: 1px 10px 3px;
+            background-color: #6495ed;
             color: #fff;
             border-radius: 6px;
-            box-shadow: 0 0 7px #1e90ff;
-            cursor: pointer;
         }
         .button-size {
             width: 75px;
             height: 25px;
+        }
+        * {
+          margin: 0;
+          padding: 0;
+          border: none;
         }
         `;
     document.head.appendChild(style);
