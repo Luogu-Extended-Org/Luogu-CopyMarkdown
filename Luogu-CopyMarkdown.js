@@ -4,7 +4,7 @@
 // @description  获取洛谷部分页面源代码
 // @author       BlackPanda
 // @license      MIT
-// @version      0.2
+// @version      0.25
 // @match          https://*.luogu.com.cn/*
 // @match          https://*.luogu.org/*
 // @grant        none
@@ -12,7 +12,7 @@
 
 (function() {
     'use strict';
-    var url = url = window.location.href;
+    var url = window.location.href;
     async function user_detail(){
         var button = document.createElement('button');
         button.textContent = 'Copy';
@@ -95,13 +95,16 @@
         //To do
         //document.head.appendChild(style);
         //window.addEventListener('load', blog);
-    } else if (url.includes('user')) {
+    }
+    if (url.includes('user') && !url.endsWith('#practice') && !url.endsWith('#mine') && !url.endsWith('#problem') && !url.includes('follower') && !url.includes('following') && !url.endsWith('#favorite')) {
         document.head.appendChild(style);
         window.addEventListener('load', user_detail);
-    } else if (url.includes('contest')) {
+    }
+    if (url.includes('contest') && !url.includes('list') && !url.endsWith('#scoreboard') && !url.includes('edit')) {
         document.head.appendChild(style);
         window.addEventListener('load', contest_detail);
-    } else if (url.includes('training')) {
+    }
+    if (url.includes('training') && !url.includes('edit') && !url.endsWith('#problems') && !url.includes('list')) {
         document.head.appendChild(style);
         window.addEventListener('load', training_detail);
     }
