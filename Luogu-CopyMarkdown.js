@@ -4,7 +4,7 @@
 // @description  获取洛谷部分页面源代码
 // @author       BlackPanda
 // @license      MIT
-// @version      0.3
+// @version      0.35
 // @match          https://*.luogu.com.cn/*
 // @match          https://*.luogu.org/*
 // @grant        none
@@ -31,6 +31,10 @@
         button.textContent = '复制Md';
         button.style.position = "absolute";
         button.style.top = "100px";button.style.right = "100px";
+        window.addEventListener('scroll', function() {
+            var scrollY = window.scrollY;
+            button.style.top = (100 + scrollY) + 'px';
+        });
         button.classList.add('button-blog', 'button-size-blog');
         button.addEventListener('click', async function() {
             fetch('/api/blog/detail/' + BlogGlobals.blogID).then(res => res.json()).then(res => navigator.clipboard.writeText(res.data.Content));
@@ -71,10 +75,14 @@
             color: #fff;
             font-size: 13px;
         }
-         .button-blog {
+        .button-blog {
             background-color: #6495ed;
             color: #fff;
             font-size: 13px;
+        }
+        .button-blog:hover {
+            background-color: lightgray;
+            cursor: pointer;
         }
         .button-size {
             width: 50px;
