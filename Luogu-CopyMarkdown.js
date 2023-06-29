@@ -29,12 +29,14 @@
     function blog(){
         var button = document.createElement('button');
         button.textContent = '复制Md';
+        button.style.position = "absolute";
+        button.style.top = "100px";button.style.right = "100px";
         button.classList.add('button-blog', 'button-size-blog');
         button.addEventListener('click', async function() {
             fetch('/api/blog/detail/' + BlogGlobals.blogID).then(res => res.json()).then(res => navigator.clipboard.writeText(res.data.Content));
             alert('复制成功');
         });
-        return button;
+        document.body.appendChild(button);
     };
     async function contest_detail(){
         var button = document.createElement('button');
@@ -90,31 +92,7 @@
         `;
     document.head.appendChild(style);
     if (url.includes('blog')) {
-        let f = 1;
-        // //Debug
-        let tmp = document.getElementsByClassName('ui mini right floated buttons');
-        if (tmp.length !== 0 && f == 1) {
-            f = 0;
-            window.addEventListener('load', function() {
-                //pos.insertBefore(button, pos.lastChild);
-                const button = blog();
-                const Tpos = document.getElementsByClassName('ui comments')[0];
-                const pos = Tpos.previousElementSibling;
-                pos.appendChild(button);
-            });
-        }
-        //HolaKit
-        tmp = document.getElementsByClassName('hola-button hola-button-primary');
-        if (tmp.length !== 0 && f == 1) {
-            f = 0;
-            window.addEventListener('load', function() {
-                const button = blog();
-                const Tpos = document.querySelector('div[id="article-vote"]');
-                const pos = Tpos.previousElementSibling;
-                console.log("[Copy-Markdown]: ", pos);
-                pos.appendChild(button);
-            });
-        }
+        blog();
     }
     if (url.includes('user') && !url.endsWith('#practice') && !url.endsWith('#mine') && !url.endsWith('#problem') && !url.includes('follower') && !url.includes('following') && !url.endsWith('#favorite')) {
         window.addEventListener('load', user_detail);
