@@ -4,7 +4,7 @@
 // @description  获取洛谷部分页面源代码
 // @author       BlackPanda
 // @license      MIT
-// @version      1.4.1
+// @version      1.4.2
 // @match          https://*.luogu.com.cn/*
 // @match          https://*.luogu.org/*
 // @grant        none
@@ -22,30 +22,30 @@
             var scrollY = window.scrollY;
             button.style.top = (100 + scrollY) + 'px';
         });
-        button.classList.add('button');
+        button.classList.add('button-lgcm');
         button.addEventListener('click', async function() {
             var introduction = _feInstance.currentData.user.introduction;
             await navigator.clipboard.writeText(introduction);
             alert('复制成功');
         });
         document.body.appendChild(button);
-    };
-    function blog(){
-        var button = document.createElement('button');
-        button.textContent = '复制Md';
-        button.style.position = "absolute";
-        button.style.top = "100px";button.style.right = "100px";
-        window.addEventListener('scroll', function() {
-            var scrollY = window.scrollY;
-            button.style.top = (100 + scrollY) + 'px';
-        });
-        button.classList.add('button');
-        button.addEventListener('click', async function() {
-            fetch('/api/blog/detail/' + BlogGlobals.blogID).then(res => res.json()).then(res => navigator.clipboard.writeText(res.data.Content));
-            alert('复制成功');
-        });
-        document.body.appendChild(button);
-    };
+    }
+    async function blog(){
+            var button = document.createElement('button');
+            button.textContent = '复制Md';
+            button.style.position = "absolute";
+            button.style.top = "100px";button.style.right = "100px";
+            window.addEventListener('scroll', function() {
+                var scrollY = window.scrollY;
+                button.style.top = (100 + scrollY) + 'px';
+            });
+            button.classList.add('button-lgcm');
+            button.addEventListener('click', async function() {
+                fetch('/api/blog/detail/' + BlogGlobals.blogID).then(res => res.json()).then(res => navigator.clipboard.writeText(res.data.Content));
+                alert('复制成功');
+            });
+            document.body.appendChild(button);
+        };
     async function contest_detail(){
         var button = document.createElement('button');
         button.textContent = '复制Md';
@@ -55,7 +55,7 @@
             var scrollY = window.scrollY;
             button.style.top = (100 + scrollY) + 'px';
         });
-        button.classList.add('button');
+        button.classList.add('button-lgcm');
         button.addEventListener('click', async function() {
             var introduction = _feInstance.currentData.contest.description;
             await navigator.clipboard.writeText(introduction);
@@ -72,7 +72,7 @@
             var scrollY = window.scrollY;
             button.style.top = (100 + scrollY) + 'px';
         });
-        button.classList.add('button');
+        button.classList.add('button-lgcm');
         button.addEventListener('click', async function() {
             var introduction = _feInstance.currentData.training.description;
             await navigator.clipboard.writeText(introduction);
@@ -82,7 +82,7 @@
     };
     var style = document.createElement('style');
     style.textContent = `
-        .button {
+        .button-lgcm {
             outline:none !important;
             cursor: pointer;
             line-height: 1.25;
@@ -104,7 +104,7 @@
             transition:all .3s;
             background-color: #5e72e4;
         }
-        .button:hover {
+        .button-lgcm:hover {
             box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
             transform: translateY(-1px);
         }
@@ -120,6 +120,7 @@
         } else {
             var path = parsedUrl.pathname.split('/');
             if (path.length >= 4) {
+                console.log('a');
                 window.addEventListener('load', blog);
             }
         }
