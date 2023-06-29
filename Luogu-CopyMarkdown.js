@@ -4,7 +4,7 @@
 // @description  获取洛谷部分页面源代码
 // @author       BlackPanda
 // @license      MIT
-// @version      0.4
+// @version      1.4.1
 // @match          https://*.luogu.com.cn/*
 // @match          https://*.luogu.org/*
 // @grant        none
@@ -124,7 +124,7 @@
             }
         }
     }
-    if (url.includes('user')) {
+    if (url.includes('user') && !url.includes('notification')) {
         window.addEventListener('load', user_detail);
     }
     if (url.includes('contest') && !url.includes('list') && !url.includes('edit') && !url.includes('contestId')) {
