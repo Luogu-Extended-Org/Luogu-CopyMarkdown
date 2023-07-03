@@ -2,9 +2,9 @@
 // @name         Luogu-CopyMarkdown
 // @namespace    https://github.com/Luogu-Extended-Org/Luogu-CopyMarkdown
 // @description  获取洛谷部分页面源代码
-// @author       BlackPanda
+// @author       BlackPanda and 2044_space_elevator
 // @license      MIT
-// @version      1.4.2
+// @version      1.5.0
 // @match          https://*.luogu.com.cn/*
 // @match          https://*.luogu.org/*
 // @grant        none
