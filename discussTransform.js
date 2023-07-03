@@ -32,6 +32,9 @@ function code(code) {
 	return '```' + code.data-rendered-lang + '\n' + code.innerText + '\n' + '```';
 }
 function latex(code) {
-	// todo
+	// $$公式To Do
 	return '$' + code.getElementsByTagName('annotation')[0].innerText + '$';
+}
+function list(code) {
+	// To Do
 }
