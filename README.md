@@ -10,7 +10,3 @@ https://greasyfork.org/zh-CN/scripts/469489-luogu-copymarkdown
 
 目前支持：个人主页、比赛简介、训练详情、博客。
 
-## Powered 
-
-**本项目讨论转markdown模块来自[mixmark-io/turndown](https://github.com/mixmark-io/turndown)**。
-
